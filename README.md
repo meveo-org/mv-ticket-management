@@ -5,12 +5,20 @@ trouble ticket management system
 
 ### Ticket
 
+A ticket represents an issue, a feature, a task,...
+
+It is persisted as a json file in the module git repo
+
+The file is stored in a directory `/issues/<milestone_id>` located at the root of the module
+where `<milestone_id>` is the id of the milestone associated to the ticket.
+
+The name of the file is `<number>-<title>.json`
+where `<number>` is the identifier (a sequence) and `title` the title of the ticket.
+
+Content of the json file:
 ```
 {
-    "id": "MDU6SXNzdWUx",
-    "number": 1347,
     "state": "open",
-    "title": "Found a bug",
     "description": "I'm having a problem with this.",
     "closed_at": null,
     "created_at": "2011-04-22T13:33:48Z",
@@ -35,6 +43,7 @@ trouble ticket management system
 }
 ```
 
+This data mode is inspired from
 
 github example
 
