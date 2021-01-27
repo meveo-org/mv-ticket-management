@@ -20,22 +20,22 @@ Content of the json file:
 {
     "state": "open",
     "description": "I'm having a problem with this.",
-    "closed_at": null,
-    "created_at": "2011-04-22T13:33:48Z",
-    "updated_at": "2011-04-22T13:33:48Z",
+    "closedAt": null,
+    "createdAt": "2011-04-22T13:33:48Z",
+    "updatedAt": "2011-04-22T13:33:48Z",
     "creator": "user0",
      "tags": ["tag1","tag2"],
      "assignees": ["user1","user2"]
      "comments" : [
          {
-            "created_at": "2011-04-22T13:33:48Z",
-            "updated_at": "2011-04-22T13:33:48Z",
+            "createdAt": "2011-04-22T13:33:48Z",
+            "updatedAt": "2011-04-22T13:33:48Z",
             "creator": "user0",
             "description": "This is my comment."
          },
          {
-            "created_at": "2011-04-22T13:33:48Z",
-            "updated_at": "2011-04-22T13:33:48Z",
+            "createdAt": "2011-04-22T13:33:48Z",
+            "updatedAt": "2011-04-22T13:33:48Z",
             "creator": "user1",
             "description": "I agree with it."
          }
