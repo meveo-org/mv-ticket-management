@@ -151,7 +151,7 @@
         "storeAsTable" : true
       },
       "samples" : [ ],
-      "audited" : false,
+      "audited" : true,
       "fields" : [ {
         "code" : "assignees",
         "description" : "Assignees",
