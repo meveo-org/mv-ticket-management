@@ -3,6 +3,12 @@ trouble ticket management system
 
 ## Datamodel
 
+### Project
+
+A project, or space is an entity that hold a list of milestones and tickets
+
+
+
 ### Ticket
 
 A ticket represents an issue, a feature, a task,...
