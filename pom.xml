@@ -18,8 +18,13 @@
 		<dependency>
 			<groupId>com.assembla</groupId>
 			<artifactId>assembla-api</artifactId>
-			<version>0.1</version>
+			<version>0.2</version>
         </dependency>
+		<dependency>
+			<groupId>org.kohsuke</groupId>
+			<artifactId>github-api</artifactId>
+			<version>1.122</version>
+		</dependency>
         <dependency>
             <artifactId>meveo-admin-ejbs</artifactId>
             <groupId>org.meveo</groupId>

@@ -38,6 +38,8 @@ public class MV_TCKTMNG_TICKET implements CustomEntity {
 
     private Instant updatedAt;
 
+    private String remoteId;
+
     @Override()
     public String getUuid() {
         return uuid;
@@ -149,6 +151,14 @@ public class MV_TCKTMNG_TICKET implements CustomEntity {
 
     public void setUpdatedAt(Instant updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public String getRemoteId() {
+        return remoteId;
+    }
+
+    public void setRemoteId(String remoteId) {
+        this.remoteId = remoteId;
     }
 
     @Override()

@@ -20,9 +20,9 @@ public class TicketManagementInstallScript extends ModuleScript {
     static final String REPO_NAME="smichea";
     static final String GROUP_ID="com.assembla";
     static final String ARTIFACT_ID="assembla-api";
-    static final String VERSION="0.1";
+    static final String VERSION="0.2";
     static final String CLASSIFIER="";
-    static final String FILENAME = "assembla-api-0.1.jar";
+    static final String FILENAME = "assembla-api-0.2.jar";
 
     MavenConfigurationService mavenConfigurationService = getCDIBean(MavenConfigurationService.class);
 

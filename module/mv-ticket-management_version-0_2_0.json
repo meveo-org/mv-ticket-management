@@ -17,12 +17,101 @@
     "mavenDependencies" : [ ],
     "importScriptInstances" : [ ]
   },
-  "currentVersion" : "0.1",
+  "currentVersion" : "0.2.0",
   "meveoVersionBase" : "6.14.0",
   "transient" : true,
   "inDraft" : true,
   "codeOnly" : false,
   "moduleItems" : [ {
+    "dtoClassName" : "org.meveo.api.dto.CustomEntityInstanceDto",
+    "dtoData" : {
+      "code" : "de50d28c-ca64-4c40-a881-e7dce5016f06",
+      "cetCode" : "CREDENTIAL",
+      "disabled" : false,
+      "customFields" : {
+        "customField" : [ {
+          "code" : "DOMAIN",
+          "stringValue" : "github.com",
+          "empty" : false
+        }, {
+          "code" : "LAST_CONNECTION",
+          "empty" : true
+        }, {
+          "code" : "TOKEN_EXPIRY",
+          "empty" : true
+        }, {
+          "code" : "AUTHENTICATION_TYPE",
+          "stringValue" : "OAUTH2",
+          "empty" : false
+        }, {
+          "code" : "PRIVATE_KEY",
+          "empty" : true
+        }, {
+          "code" : "PUBLIC_KEY",
+          "empty" : true
+        }, {
+          "code" : "HEADER_VALUE",
+          "empty" : true
+        }, {
+          "code" : "REFRESH_TOKEN",
+          "empty" : true
+        }, {
+          "code" : "HEADER_KEY",
+          "empty" : true
+        }, {
+          "code" : "STATUS",
+          "stringValue" : "ACTIVE",
+          "empty" : false
+        }, {
+          "code" : "PASSWORD",
+          "empty" : true
+        }, {
+          "code" : "USERNAME",
+          "stringValue" : "smichea",
+          "empty" : false
+        }, {
+          "code" : "TOKEN",
+          "stringValue" : "acccd14e50cf230f8d58311dabc25815a73028e8",
+          "empty" : false
+        } ],
+        "inheritedCustomField" : [ ],
+        "empty" : false
+      }
+    }
+  }, {
+    "dtoClassName" : "org.meveo.api.dto.CustomEntityInstanceDto",
+    "dtoData" : {
+      "code" : "717d2810-9da9-4bd7-bdf8-0d62e1f3cc8c",
+      "cetCode" : "MV_TCKTMNG_PROJECT",
+      "disabled" : false,
+      "customFields" : {
+        "customField" : [ {
+          "code" : "name",
+          "stringValue" : "crawler-engine",
+          "empty" : false
+        }, {
+          "code" : "description",
+          "stringValue" : "Crawler engine",
+          "empty" : false
+        }, {
+          "code" : "remoteSpaces",
+          "mapValue" : {
+            "assembla.com" : {
+              "value" : "webdrone-iep-kbstudio",
+              "empty" : false
+            },
+            "github.com" : {
+              "value" : "webdrone-fr/crawler-engine",
+              "empty" : false
+            }
+          },
+          "empty" : true
+        } ],
+        "inheritedCustomField" : [ ],
+        "empty" : false
+      }
+    }
+  }, {
     "dtoClassName" : "org.meveo.api.dto.CustomEntityTemplateDto",
     "dtoData" : {
       "code" : "MV_TCKTMNG_TICKET",
@@ -116,8 +205,8 @@
         "audited" : false,
         "persisted" : true,
         "filter" : false,
-        "unique" : false,
         "entityClazzCetCode" : "MV_TCKTMNG_COMMENT",
+        "unique" : false,
         "matrixColumns" : [ ],
         "childEntityFieldsForSummary" : [ "createdAt", "creator", "description", "updatedAt" ]
       }, {
@@ -178,7 +267,7 @@
       }, {
         "code" : "description",
         "description" : "Description",
-        "fieldType" : "TEXT_AREA",
+        "fieldType" : "LONG_TEXT",
         "accountLevel" : "CE_MV_TCKTMNG_TICKET",
         "appliesTo" : "CE_MV_TCKTMNG_TICKET",
         "useInheritedAsDefaultValue" : false,
@@ -196,8 +285,8 @@
         "identifier" : false,
         "storages" : [ "SQL" ],
         "samples" : [ ],
-        "summary" : false,
-        "audited" : true,
+        "summary" : true,
+        "audited" : false,
         "persisted" : true,
         "filter" : false,
         "unique" : false,
@@ -228,8 +317,8 @@
         "audited" : false,
         "persisted" : true,
         "filter" : false,
-        "unique" : false,
         "entityClazzCetCode" : "MV_TCKTMNG_MILESTONE",
+        "unique" : false,
         "matrixColumns" : [ ]
       }, {
         "code" : "number",
@@ -284,8 +373,36 @@
         "audited" : false,
         "persisted" : true,
         "filter" : false,
-        "unique" : false,
         "entityClazzCetCode" : "MV_TCKTMNG_PROJECT",
+        "unique" : false,
+        "matrixColumns" : [ ]
+      }, {
+        "code" : "remoteId",
+        "description" : "Remote Id",
+        "fieldType" : "STRING",
+        "accountLevel" : "CE_MV_TCKTMNG_TICKET",
+        "appliesTo" : "CE_MV_TCKTMNG_TICKET",
+        "useInheritedAsDefaultValue" : false,
+        "storageType" : "SINGLE",
+        "valueRequired" : false,
+        "versionable" : false,
+        "triggerEndPeriodEvent" : false,
+        "listValues" : { },
+        "allowEdit" : true,
+        "hideOnNew" : false,
+        "maxValue" : 255,
+        "contentTypes" : [ ],
+        "fileExtensions" : [ ],
+        "saveOnExplorer" : false,
+        "guiPosition" : "tab:Ticket:0;field:12",
+        "identifier" : false,
+        "storages" : [ "SQL" ],
+        "samples" : [ ],
+        "summary" : true,
+        "audited" : false,
+        "persisted" : true,
+        "filter" : false,
+        "unique" : false,
         "matrixColumns" : [ ]
       }, {
         "code" : "tags",
@@ -374,6 +491,23 @@
       "actions" : [ ]
     }
   }, {
+    "dtoClassName" : "org.meveo.api.dto.ScriptInstanceDto",
+    "dtoData" : {
+      "active" : true,
+      "code" : "org.meveo.ticket_management.RetrieveRemoteMilestonesScript",
+      "description" : "retrieve milestones from the remote space of a project",
+      "inputs" : [ ],
+      "outputs" : [ ],
+      "generateOutputs" : false,
+      "type" : "JAVA",
+      "transactionType" : "SAME",
+      "script" : "package org.meveo.ticket_management;\r\n\r\nimport java.util.Map;\r\nimport java.time.ZoneOffset;\r\nimport java.util.List;\r\nimport org.meveo.service.script.Script;\r\nimport org.slf4j.Logger;\r\nimport org.slf4j.LoggerFactory;\r\nimport org.meveo.model.customEntities.CustomEntityInstance;\r\nimport org.meveo.model.persistence.CEIUtils;\r\n\r\nimport org.meveo.model.customEntities.MV_TCKTMNG_MILESTONE;\r\nimport org.meveo.model.customEntities.MV_TCKTMNG_PROJECT;\r\n\r\nimport org.meveo.model.customEntities.CREDENTIAL;\r\nimport org.meveo.admin.exception.BusinessException;\r\nimport org.meveo.service.storage.RepositoryService;\r\nimport org.meveo.api.persistence.CrossStorageApi;\r\n\r\nimport com.assembla.Milestone;\r\nimport com.assembla.client.AssemblaAPI;\r\nimport com.assembla.client.AssemblaResource;\r\nimport com.assembla.client.PagedIterator;\r\n\r\n\r\npublic class RetrieveRemoteMilestonesScript extends Script {\r\n\r\n  private static final Logger log = LoggerFactory.getLogger(RetrieveRemoteMilestonesScript.class);\r\n    \r\n\r\n    private CrossStorageApi crossStorageApi = getCDIBean(CrossStorageApi.class);\r\n\t\r\n\r\n  \tprivate RepositoryService repositoryService = getCDIBean(RepositoryService.class);\r\n  \r\n    \r\n    private CREDENTIAL getCredential(String domain){\r\n      List<CREDENTIAL> matchingCredentials = crossStorageApi.find(repositoryService.findDefaultRepository(), CREDENTIAL.class)\r\n                .by(\"DOMAIN\", domain)\r\n\t\t\t\t.getResults();\r\n      if(matchingCredentials.size()>0){\r\n        return matchingCredentials.get(0);\r\n      } else {\r\n        return null;\r\n      }\r\n    }\r\n\r\n    private MV_TCKTMNG_MILESTONE getMilestone(String remoteId){\r\n      MV_TCKTMNG_MILESTONE result=null;\r\n      List<MV_TCKTMNG_MILESTONE> matchingMilestones = crossStorageApi.find(repositoryService.findDefaultRepository(), MV_TCKTMNG_MILESTONE.class)\r\n                .by(\"remoteId\", remoteId)\r\n\t\t\t\t.getResults();\r\n      if(matchingMilestones.size()>0){\r\n        result = matchingMilestones.get(0);\r\n      } else {\r\n        result =  new MV_TCKTMNG_MILESTONE();\r\n        result.setRemoteId(remoteId);\r\n      }\r\n      return result;\r\n    }\r\n\r\n    public void retrieveAssemblaMilsteones(MV_TCKTMNG_PROJECT project)  throws BusinessException {\r\n      log.debug(\"retrieveAssemblaTickets for project {}\",project.getName());\r\n      CREDENTIAL assemblaCredential = getCredential(\"assembla.com\");\r\n      if(assemblaCredential==null){\r\n        throw new BusinessException(\"cannot find any Credential for assembla.com, please create one with username= api-key and header-value=api-secret.\");\r\n      }\r\n      try {\r\n        AssemblaResource api  = AssemblaAPI.create(assemblaCredential.getUSERNAME(), assemblaCredential.getHEADER_VALUE());\r\n        PagedIterator<Milestone> pgIt=api.milestones(project.getRemoteSpaces().get(\"assembla.com\")).getAll();\r\n        \r\n        pgIt.forEach(milestones->{\r\n          for(Milestone assemblaMilestone:milestones){\r\n            log.debug(\"milestone  {}\",assemblaMilestone);\r\n            MV_TCKTMNG_MILESTONE milestone = getMilestone(assemblaMilestone.getId());\r\n            \r\n            log.debug(\"milestone title: {}\",assemblaMilestone.getTitle());\r\n            milestone.setTitle(assemblaMilestone.getTitle());\r\n            milestone.setDescription(assemblaMilestone.getDescription());\r\n            if(assemblaMilestone.getCreatedAt()!=null){\r\n              milestone.setStartDate(assemblaMilestone.getCreatedAt().toInstant());\r\n            }\r\n            if(assemblaMilestone.getDueDate()!=null){\r\n              milestone.setDueDate(assemblaMilestone.getDueDate().atStartOfDay().toInstant(ZoneOffset.UTC));\r\n            }\r\n            if(assemblaMilestone.getCompletedDate()!=null){\r\n              milestone.setEndDate(assemblaMilestone.getCompletedDate().atStartOfDay().toInstant(ZoneOffset.UTC));\r\n            }\r\n            try{\r\n            crossStorageApi.createOrUpdate(repositoryService.findDefaultRepository(), CEIUtils.pojoToCei(milestone));\r\n            } catch (Exception e){\r\n              throw new RuntimeException(\"Exception while persisting milestone\",e);\r\n            }\r\n          };\r\n        });\r\n      } catch (Exception e){\r\n        throw new BusinessException(\"Exception while retrieving assembla tickets\",e);\r\n      }\r\n    }\r\n\r\n    @Override\r\n    public void execute(Map<String,Object> params)  throws BusinessException {\r\n        CustomEntityInstance cei = (CustomEntityInstance)params.get(\"CONTEXT_ENTITY\");\r\n        MV_TCKTMNG_PROJECT project = CEIUtils.ceiToPojo(cei, MV_TCKTMNG_PROJECT.class);\r\n        for(String domain:project.getRemoteSpaces().keySet()){\r\n          if(\"assembla.com\".equals(domain)){\r\n            retrieveAssemblaMilsteones(project);\r\n          }\r\n        }\r\n      \tlog.info(\"project:{}\",project);\r\n    }\r\n\r\n\r\n}",
+      "executionRoles" : [ ],
+      "sourcingRoles" : [ ],
+      "mavenDependencies" : [ ],
+      "importScriptInstances" : [ ]
+    }
+  }, {
     "dtoClassName" : "org.meveo.api.dto.CustomEntityInstanceDto",
     "dtoData" : {
       "code" : "c99fc933-fb73-45c4-823e-40c533a9e441",
@@ -446,7 +580,7 @@
       "fields" : [ {
         "code" : "description",
         "description" : "Description",
-        "fieldType" : "TEXT_AREA",
+        "fieldType" : "LONG_TEXT",
         "accountLevel" : "CE_MV_TCKTMNG_MILESTONE",
         "appliesTo" : "CE_MV_TCKTMNG_MILESTONE",
         "useInheritedAsDefaultValue" : false,
@@ -464,7 +598,7 @@
         "identifier" : false,
         "storages" : [ "SQL" ],
         "samples" : [ ],
-        "summary" : false,
+        "summary" : true,
         "audited" : false,
         "persisted" : true,
         "filter" : false,
@@ -550,8 +684,8 @@
         "audited" : false,
         "persisted" : true,
         "filter" : false,
-        "unique" : false,
         "entityClazzCetCode" : "MV_TCKTMNG_PROJECT",
+        "unique" : false,
         "matrixColumns" : [ ]
       }, {
         "code" : "remoteId",
@@ -710,7 +844,7 @@
       }, {
         "code" : "description",
         "description" : "Description",
-        "fieldType" : "TEXT_AREA",
+        "fieldType" : "LONG_TEXT",
         "accountLevel" : "CE_MV_TCKTMNG_COMMENT",
         "appliesTo" : "CE_MV_TCKTMNG_COMMENT",
         "useInheritedAsDefaultValue" : false,
@@ -728,8 +862,8 @@
         "identifier" : false,
         "storages" : [ ],
         "samples" : [ ],
-        "summary" : false,
-        "audited" : true,
+        "summary" : true,
+        "audited" : false,
         "persisted" : true,
         "filter" : false,
         "unique" : false,
@@ -783,13 +917,16 @@
           "empty" : false
         }, {
           "code" : "description",
-          "stringValue" : "investigation core",
-          "empty" : false
+          "empty" : true
         }, {
           "code" : "remoteSpaces",
           "mapValue" : {
             "assembla.com" : {
               "value" : "webdrone-iep-kbstudio",
+              "empty" : false
+            },
+            "github.com" : {
+              "value" : "webdrone-fr/investigation-core",
               "empty" : false
             }
           },
@@ -815,7 +952,7 @@
       "fields" : [ {
         "code" : "description",
         "description" : "Description",
-        "fieldType" : "TEXT_AREA",
+        "fieldType" : "LONG_TEXT",
         "accountLevel" : "CE_MV_TCKTMNG_PROJECT",
         "appliesTo" : "CE_MV_TCKTMNG_PROJECT",
         "useInheritedAsDefaultValue" : false,
@@ -829,11 +966,11 @@
         "contentTypes" : [ ],
         "fileExtensions" : [ ],
         "saveOnExplorer" : false,
-        "guiPosition" : "tab:Project:0;field:1",
+        "guiPosition" : "tab:Project:0;field:2",
         "identifier" : false,
         "storages" : [ "SQL" ],
         "samples" : [ ],
-        "summary" : false,
+        "summary" : true,
         "audited" : false,
         "persisted" : true,
         "filter" : false,
@@ -899,10 +1036,26 @@
       } ],
       "actions" : [ {
         "code" : "RETRIEVE_REMOTE_TICKETS",
-        "description" : "retreive tickets from remote spaces",
+        "description" : "retreive remote tickets from milestones",
         "appliesTo" : "CE_MV_TCKTMNG_PROJECT",
-        "label" : "Retrieve tickets",
+        "label" : "Retrieve Milestones tickets",
         "script" : "org.meveo.ticket_management.RetrieveRemoteTicketsScript",
+        "applicableToEntityList" : false,
+        "applicableToEntityInstance" : true
+      }, {
+        "code" : "RETRIEVE_REMOTE_MILESTONES",
+        "description" : "Retrieve remote milestones",
+        "appliesTo" : "CE_MV_TCKTMNG_PROJECT",
+        "label" : "Retrieve Milestones",
+        "script" : "org.meveo.ticket_management.RetrieveRemoteMilestonesScript",
+        "applicableToEntityList" : false,
+        "applicableToEntityInstance" : true
+      }, {
+        "code" : "CREATE_GITHUB_TICKETS",
+        "description" : "Create tickets in github",
+        "appliesTo" : "CE_MV_TCKTMNG_PROJECT",
+        "label" : "Create Github tickets",
+        "script" : "org.meveo.ticket_management.WriteOpenTicketsToGithub",
         "applicableToEntityList" : false,
         "applicableToEntityInstance" : true
       } ]
@@ -917,7 +1070,7 @@
       "generateOutputs" : false,
       "type" : "JAVA",
       "transactionType" : "SAME",
-      "script" : "package org.meveo.ticket_management;\r\n\r\nimport java.util.Map;\r\nimport java.time.ZoneOffset;\r\nimport java.util.Collection;\r\nimport java.util.HashMap;\r\nimport java.util.List;\r\nimport javax.inject.Inject;\r\nimport javax.enterprise.inject.Instance;\r\nimport org.meveo.service.script.Script;\r\nimport org.slf4j.Logger;\r\nimport org.slf4j.LoggerFactory;\r\nimport org.meveo.model.customEntities.CustomEntityInstance;\r\nimport org.meveo.model.persistence.CEIUtils;\r\n\r\nimport org.meveo.model.customEntities.MV_TCKTMNG_TICKET;\r\nimport org.meveo.model.customEntities.MV_TCKTMNG_COMMENT;\r\nimport org.meveo.model.customEntities.MV_TCKTMNG_MILESTONE;\r\nimport org.meveo.model.customEntities.MV_TCKTMNG_PROJECT;\r\n\r\nimport org.meveo.model.customEntities.CREDENTIAL;\r\nimport org.meveo.admin.exception.BusinessException;\r\nimport org.meveo.model.storage.Repository;\r\nimport org.meveo.service.storage.RepositoryService;\r\nimport org.meveo.api.persistence.CrossStorageApi;\r\n\r\nimport com.assembla.Milestone;\r\nimport com.assembla.Ticket;\r\nimport com.assembla.client.AssemblaAPI;\r\nimport com.assembla.client.AssemblaResource;\r\nimport com.assembla.client.PagedIterator;\r\n\r\n\r\npublic class RetrieveRemoteTicketsScript extends Script {\r\n\r\n    private static final Logger log = LoggerFactory.getLogger(RetrieveRemoteTicketsScript.class);\r\n    \r\n  \t@Inject\r\n    private CrossStorageApi crossStorageApi;\r\n\t\r\n    @Inject\r\n  \tprivate RepositoryService repositoryService;\r\n  \r\n    \r\n    private CREDENTIAL getCredential(String domain){\r\n      List<CREDENTIAL> matchingCredentials = crossStorageApi.find(repositoryService.findDefaultRepository(), CREDENTIAL.class)\r\n                .by(\"DOMAIN\", domain)\r\n\t\t\t\t.getResults();\r\n      if(matchingCredentials.size()>0){\r\n        return matchingCredentials.get(0);\r\n      } else {\r\n        return null;\r\n      }\r\n    }\r\n\r\n    private MV_TCKTMNG_MILESTONE getMilestone(String remoteId){\r\n      MV_TCKTMNG_MILESTONE result=null;\r\n      List<MV_TCKTMNG_MILESTONE> matchingMilestones = crossStorageApi.find(repositoryService.findDefaultRepository(), MV_TCKTMNG_MILESTONE.class)\r\n                .by(\"remoteId\", remoteId)\r\n\t\t\t\t.getResults();\r\n      if(matchingMilestones.size()>0){\r\n        result = matchingMilestones.get(0);\r\n      } else {\r\n        result =  new MV_TCKTMNG_MILESTONE();\r\n        result.setRemoteId(remoteId);\r\n      }\r\n      return result;\r\n    }\r\n\r\n    public void retrieveAssemblaTickets(String spaceName)  throws BusinessException {\r\n    }\r\n\r\n    public void retrieveAssemblaTickets(MV_TCKTMNG_PROJECT project)  throws BusinessException {\r\n      CREDENTIAL assemblaCredential = getCredential(\"assembla.com\");\r\n      if(assemblaCredential==null){\r\n        throw new BusinessException(\"cannot find any Credential for assembla.com, please create one with username= api-key and header-value=api-secret.\");\r\n      }\r\n      try {\r\n        AssemblaResource api  = AssemblaAPI.create(assemblaCredential.getUSERNAME(), assemblaCredential.getHEADER_VALUE());\r\n        PagedIterator<Milestone> pgIt=api.milestones(project.getRemoteSpaces().get(\"assembla.com\")).getAll();\r\n        \r\n        pgIt.forEach(milestones->{\r\n          for(Milestone assemblaMilestone:milestones){\r\n            MV_TCKTMNG_MILESTONE milestone = getMilestone(assemblaMilestone.getId());\r\n            milestone.setTitle(assemblaMilestone.getTitle());\r\n            milestone.setDescription(assemblaMilestone.getDescription());\r\n            if(assemblaMilestone.getCreatedAt()!=null){\r\n              milestone.setStartDate(assemblaMilestone.getCreatedAt().toInstant());\r\n            }\r\n            if(assemblaMilestone.getDueDate()!=null){\r\n              milestone.setDueDate(assemblaMilestone.getDueDate().atStartOfDay().toInstant(ZoneOffset.UTC));\r\n            }\r\n            if(assemblaMilestone.getCompletedDate()!=null){\r\n              milestone.setEndDate(assemblaMilestone.getCompletedDate().atStartOfDay().toInstant(ZoneOffset.UTC));\r\n            }\r\n            try{\r\n            crossStorageApi.createOrUpdate(repositoryService.findDefaultRepository(), CEIUtils.pojoToCei(milestone));\r\n            } catch (Exception e){\r\n              throw new RuntimeException(\"Exception while persisting milestone\",e);\r\n            }\r\n          };\r\n        });\r\n      } catch (Exception e){\r\n        throw new BusinessException(\"Exception while retrieving assembla tickets\",e);\r\n      }\r\n    }\r\n\r\n    @Override\r\n    public void execute(Map<String,Object> params)  throws BusinessException {\r\n        CustomEntityInstance cei = (CustomEntityInstance)params.get(\"CONTEXT_ENTITY\");\r\n        MV_TCKTMNG_PROJECT project = CEIUtils.ceiToPojo(cei, MV_TCKTMNG_PROJECT.class);\r\n        for(String domain:project.getRemoteSpaces().keySet()){\r\n          if(\"assembla.com\".equals(domain)){\r\n            retrieveAssemblaTickets(project);\r\n          }\r\n        }\r\n      \tlog.info(\"project:{}\",project);\r\n    }\r\n\r\n\r\n}",
+      "script" : "package org.meveo.ticket_management;\r\n\r\nimport java.util.Map;\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\nimport org.meveo.service.script.Script;\r\nimport org.slf4j.Logger;\r\nimport org.slf4j.LoggerFactory;\r\nimport org.meveo.model.customEntities.CustomEntityInstance;\r\nimport org.meveo.model.persistence.CEIUtils;\r\n\r\nimport org.meveo.model.customEntities.MV_TCKTMNG_TICKET;\r\nimport org.meveo.model.customEntities.MV_TCKTMNG_COMMENT;\r\nimport org.meveo.model.customEntities.MV_TCKTMNG_MILESTONE;\r\nimport org.meveo.model.customEntities.MV_TCKTMNG_PROJECT;\r\n\r\nimport org.meveo.model.customEntities.CREDENTIAL;\r\nimport org.meveo.admin.exception.BusinessException;\r\nimport org.meveo.service.storage.RepositoryService;\r\nimport org.meveo.api.persistence.CrossStorageApi;\r\n\r\nimport com.assembla.State;\r\nimport com.assembla.Ticket;\r\nimport com.assembla.TicketComment;\r\nimport com.assembla.Ticket.Priority;\r\nimport com.assembla.client.AssemblaAPI;\r\nimport com.assembla.client.AssemblaResource;\r\nimport com.assembla.client.PagedIterator;\r\nimport com.assembla.service.TicketRequest;\r\nimport com.assembla.service.TicketRequest.Builder;\r\n\r\npublic class RetrieveRemoteTicketsScript extends Script {\r\n\r\n  private static final Logger log = LoggerFactory.getLogger(RetrieveRemoteTicketsScript.class);\r\n\r\n  private CrossStorageApi crossStorageApi = getCDIBean(CrossStorageApi.class);\r\n\r\n  private RepositoryService repositoryService = getCDIBean(RepositoryService.class);\r\n\r\n  private CREDENTIAL getCredential(String domain) {\r\n    List<CREDENTIAL> matchingCredentials = crossStorageApi\r\n        .find(repositoryService.findDefaultRepository(), CREDENTIAL.class).by(\"DOMAIN\", domain).getResults();\r\n    if (matchingCredentials.size() > 0) {\r\n      return matchingCredentials.get(0);\r\n    } else {\r\n      return null;\r\n    }\r\n  }\r\n\r\n  private List<MV_TCKTMNG_MILESTONE> getMilestones(String projectUuid) {\r\n    List<MV_TCKTMNG_MILESTONE> matchingMilestones = crossStorageApi\r\n        .find(repositoryService.findDefaultRepository(), MV_TCKTMNG_MILESTONE.class).by(\"project\", projectUuid)\r\n        .getResults();\r\n    return matchingMilestones;\r\n  }\r\n\r\n  public void retrieveAssemblaTicketsForMilestone(AssemblaResource api, MV_TCKTMNG_MILESTONE milestone,\r\n      MV_TCKTMNG_PROJECT project,TicketRequest tr) throws BusinessException {\r\n     PagedIterator<Ticket> pgIt = api.tickets(project.getRemoteSpaces().get(\"assembla.com\"))\r\n        .getByMilestone(milestone.getRemoteId(), tr);\r\n    pgIt.forEach(tickets->{;\r\n    for (Ticket assemblaTicket : tickets) {\r\n      log.debug(\"tickets  {}\", assemblaTicket);\r\n      MV_TCKTMNG_TICKET ticket =new MV_TCKTMNG_TICKET();\r\n      ticket.setMilestone(milestone);\r\n      ticket.setProject(project);\r\n      ticket.setRemoteId(assemblaTicket.getNumber()+\" - \"+assemblaTicket.getId());\r\n      ticket.setTitle(assemblaTicket.getSummary());\r\n      ticket.setDescription(assemblaTicket.getDescription());\r\n      ticket.setCreator(assemblaTicket.getReporterId());\r\n      if(assemblaTicket.getCreatedOn()!=null){\r\n        ticket.setCreatedAt(assemblaTicket.getCreatedOn().toInstant());\r\n      }\r\n      if(assemblaTicket.getCompletedDate()!=null){\r\n        ticket.setClosedAt(assemblaTicket.getCompletedDate().toInstant());\r\n      }\r\n      if(assemblaTicket.getUpdatedAt()!=null){\r\n        ticket.setUpdatedAt(assemblaTicket.getUpdatedAt().toInstant());\r\n      }\r\n      List<String> assignees = new ArrayList<String>();\r\n      assignees.add(assemblaTicket.getAssignedToId());\r\n      ticket.setAssignees(assignees);\r\n      List<String> tags = new ArrayList<String>();\r\n      Priority p= assemblaTicket.getPriority();\r\n      if(p!=null){\r\n        tags.add(p.name());\r\n      }\r\n      List<String> atags=assemblaTicket.getTags();\r\n      if(atags!=null){\r\n        tags.addAll(atags);\r\n      }\r\n      State s = assemblaTicket.getState();\r\n      if(s!=null){\r\n        tags.add(s.name());\r\n      }\r\n      String status = assemblaTicket.getStatus();\r\n      if(status!=null){\r\n        tags.add(status);\r\n      }\r\n      ticket.setTags(tags);\r\n      List<MV_TCKTMNG_COMMENT> comments = new ArrayList<>();\r\n      PagedIterator<TicketComment> pigtcomments = api.ticketComments(project.getRemoteSpaces().get(\"assembla.com\")).getAll(assemblaTicket.getNumber());\r\n      pigtcomments.forEach(assemblaComments -> {\r\n        for(TicketComment assemblaComment:assemblaComments){\r\n          log.debug(\"comment  {}\", assemblaComments);\r\n          MV_TCKTMNG_COMMENT comment = new MV_TCKTMNG_COMMENT();\r\n          if(assemblaComment.getCreatedOn()!=null){\r\n            comment.setCreatedAt(assemblaComment.getCreatedOn().toInstant());\r\n          }\r\n          if(assemblaComment.getComment()!=null && assemblaComment.getComment().length()>0){\r\n            comment.setDescription(assemblaComment.getComment());\r\n            if(assemblaComment.getUpdatedAt()!=null){\r\n              comment.setUpdatedAt(assemblaComment.getUpdatedAt().toInstant());\r\n            }\r\n            comment.setCreator(assemblaComment.getUserId()+\"\");\r\n            comments.add(comment);\r\n          } \r\n        }\r\n      });\r\n      ticket.setComments(comments);\r\n      try {\r\n        crossStorageApi.createOrUpdate(repositoryService.findDefaultRepository(), CEIUtils.pojoToCei(ticket));\r\n      } catch (Exception e) {\r\n        throw new RuntimeException(\"Exception while persisting ticket\", e);\r\n      }\r\n    }\r\n  });\r\n  }\r\n\r\n  public void retrieveAssemblaTickets(MV_TCKTMNG_PROJECT project) throws BusinessException {\r\n    log.debug(\"retrieveAssemblaTickets for project {}\", project.getName());\r\n    CREDENTIAL assemblaCredential = getCredential(\"assembla.com\");\r\n    if (assemblaCredential == null) {\r\n      throw new BusinessException(\r\n          \"cannot find any Credential for assembla.com, please create one with username= api-key and header-value=api-secret.\");\r\n    }\r\n    try {\r\n      AssemblaResource api = AssemblaAPI.create(assemblaCredential.getUSERNAME(), assemblaCredential.getHEADER_VALUE());\r\n      Builder builder= new Builder();\r\n      TicketRequest tr = new TicketRequest(builder.all());\r\n        List<MV_TCKTMNG_MILESTONE> milestones = getMilestones(project.getUuid());\r\n        for(MV_TCKTMNG_MILESTONE milestone:milestones){\r\n          retrieveAssemblaTicketsForMilestone(api,milestone,project,tr);\r\n        }\r\n      } catch (Exception e){\r\n        throw new BusinessException(\"Exception while retrieving assembla tickets\",e);\r\n      }\r\n    }\r\n\r\n    @Override\r\n    public void execute(Map<String,Object> params)  throws BusinessException {\r\n        CustomEntityInstance cei = (CustomEntityInstance)params.get(\"CONTEXT_ENTITY\");\r\n        MV_TCKTMNG_PROJECT project = CEIUtils.ceiToPojo(cei, MV_TCKTMNG_PROJECT.class);\r\n        for(String domain:project.getRemoteSpaces().keySet()){\r\n          if(\"assembla.com\".equals(domain)){\r\n            retrieveAssemblaTickets(project);\r\n          }\r\n        }\r\n      \tlog.info(\"project:{}\",project);\r\n    }\r\n\r\n\r\n}",
       "executionRoles" : [ ],
       "sourcingRoles" : [ ],
       "mavenDependencies" : [ {
@@ -945,12 +1098,34 @@
       "importScriptInstances" : [ ]
     }
   }, {
+    "dtoClassName" : "org.meveo.api.dto.ScriptInstanceDto",
+    "dtoData" : {
+      "active" : true,
+      "code" : "org.meveo.ticket_management.WriteOpenTicketsToGithub",
+      "description" : "create existing open tickets in github repository",
+      "inputs" : [ ],
+      "outputs" : [ ],
+      "generateOutputs" : false,
+      "type" : "JAVA",
+      "transactionType" : "SAME",
+      "script" : "package org.meveo.ticket_management;\r\n\r\nimport java.io.IOException;\r\nimport java.util.List;\r\nimport java.util.Map;\r\nimport java.util.stream.Collectors;\r\n\r\nimport org.kohsuke.github.GHIssue;\r\nimport org.kohsuke.github.GHIssueBuilder;\r\nimport org.kohsuke.github.GHIssueState;\r\nimport org.kohsuke.github.GHMilestone;\r\nimport org.kohsuke.github.GHProject;\r\nimport org.kohsuke.github.GHRepository;\r\nimport org.kohsuke.github.GitHub;\r\nimport org.kohsuke.github.GitHubBuilder;\r\nimport org.kohsuke.github.PagedIterable;\r\nimport org.meveo.admin.exception.BusinessException;\r\nimport org.meveo.api.persistence.CrossStorageApi;\r\nimport org.meveo.model.customEntities.CREDENTIAL;\r\nimport org.meveo.model.customEntities.CustomEntityInstance;\r\nimport org.meveo.model.customEntities.MV_TCKTMNG_COMMENT;\r\nimport org.meveo.model.customEntities.MV_TCKTMNG_MILESTONE;\r\nimport org.meveo.model.customEntities.MV_TCKTMNG_PROJECT;\r\nimport org.meveo.model.customEntities.MV_TCKTMNG_TICKET;\r\nimport org.meveo.model.persistence.CEIUtils;\r\nimport org.meveo.service.script.Script;\r\nimport org.meveo.service.storage.RepositoryService;\r\nimport org.slf4j.Logger;\r\nimport org.slf4j.LoggerFactory;\r\n\r\npublic class WriteOpenTicketsToGithub extends Script {\r\n    String oauthToken = \"acccd14e50cf230f8d58311dabc25815a73028e8\";\r\n    private static final Logger log = LoggerFactory.getLogger(WriteOpenTicketsToGithub.class);\r\n\r\n    private CrossStorageApi crossStorageApi = getCDIBean(CrossStorageApi.class);\r\n\r\n    private RepositoryService repositoryService = getCDIBean(RepositoryService.class);\r\n\r\n    private CREDENTIAL getCredential(String domain) {\r\n        List<CREDENTIAL> matchingCredentials = crossStorageApi\r\n                .find(repositoryService.findDefaultRepository(), CREDENTIAL.class).by(\"DOMAIN\", domain).getResults();\r\n        if (matchingCredentials.size() > 0) {\r\n            return matchingCredentials.get(0);\r\n        } else {\r\n            return null;\r\n        }\r\n    }\r\n\r\n    private List<MV_TCKTMNG_MILESTONE> getMilestones(String projectUuid) {\r\n        List<MV_TCKTMNG_MILESTONE> matchingMilestones = crossStorageApi\r\n                .find(repositoryService.findDefaultRepository(), MV_TCKTMNG_MILESTONE.class).by(\"project\", projectUuid)\r\n                .getResults();\r\n        return matchingMilestones;\r\n    }\r\n\r\n\r\n    private List<MV_TCKTMNG_TICKET> getTickets(String milestoneUuid) {\r\n        List<MV_TCKTMNG_TICKET> matchingTickets = crossStorageApi\r\n                .find(repositoryService.findDefaultRepository(), MV_TCKTMNG_TICKET.class).by(\"milestone\", milestoneUuid)\r\n                .getResults();\r\n        return matchingTickets;\r\n    }\r\n\r\n\r\n    private void createGithubTicketsForMilestone(GitHub github, MV_TCKTMNG_MILESTONE milestone,\r\n            MV_TCKTMNG_PROJECT project)  throws BusinessException {\r\n        try {\r\n            //GHProject ghProject = github.getProject(Long.parseLong(project.getRemoteSpaces().get(\"github.com\")));\r\n            GHRepository ghRepository = github.getRepository(project.getRemoteSpaces().get(\"github.com\"));\r\n            GHMilestone ghMilestone = null;\r\n            List<GHMilestone> ghMilestones = ghRepository.listMilestones(GHIssueState.ALL).asList();\r\n            for(GHMilestone gh_milestone:ghMilestones) {\r\n                if(milestone.getTitle().equals(gh_milestone.getTitle())){\r\n                    ghMilestone=gh_milestone;\r\n                    break;\r\n                }\r\n            };\r\n            if(ghMilestone==null){\r\n                ghMilestone = ghRepository.createMilestone(milestone.getTitle(), milestone.getDescription());\r\n            }\r\n            List<MV_TCKTMNG_TICKET> tickets = getTickets(milestone.getUuid());\r\n            Map<String,MV_TCKTMNG_TICKET> openTickets= tickets.stream().filter(ticket-> (ticket.getClosedAt()==null)).collect(Collectors.toMap(MV_TCKTMNG_TICKET::getTitle, ticket -> ticket));\r\n            PagedIterable<GHIssue> issues = ghRepository.listIssues(GHIssueState.ALL);\r\n            issues.forEach(issue ->{\r\n                if(openTickets.containsKey(issue.getTitle())){\r\n                    openTickets.remove(issue.getTitle());\r\n                    log.debug(\"ticket [\"+issue.getTitle()+\"] already exist in github, we ignore it\");\r\n                }\r\n            });\r\n            for(MV_TCKTMNG_TICKET ticket:openTickets.values()){\r\n                GHIssueBuilder createIssue = ghRepository.createIssue(ticket.getTitle());\r\n                //TODO: implement assignee mapping\r\n                createIssue.body(ticket.getDescription());\r\n                createIssue.milestone(ghMilestone);\r\n                for(String tag:ticket.getTags()){\r\n                    if((!\"open\".equalsIgnoreCase(tag))&&(!\"closed\".equalsIgnoreCase(tag))){\r\n                        createIssue.label(tag);\r\n                    }\r\n                }\r\n                GHIssue issue = createIssue.create();\r\n                /*if(ticket.getComments()!=null){\r\n                    for(MV_TCKTMNG_COMMENT comment:ticket.getComments()){\r\n                        issue.comment(comment.getDescription());\r\n                    }\r\n                } */  \r\n            }\r\n        } catch (NumberFormatException e) {\r\n            throw new BusinessException(\"project should contain a \\\"github.com\\\" remote space containing the repository name\");\r\n        } catch (IOException e) {\r\n            throw new BusinessException(\"Cannot find project with id :\"+project.getRemoteSpaces().get(\"github.com\"));\r\n        }\r\n  }\r\n\r\n  public void createGithubTickets(MV_TCKTMNG_PROJECT project) throws BusinessException {\r\n    log.debug(\"createGithubTickets for project {}\", project.getName());\r\n    CREDENTIAL assemblaCredential = getCredential(\"github.com\");\r\n    if (assemblaCredential == null) {\r\n      throw new BusinessException(\r\n          \"cannot find any Credential for github.com, please create one with token set to your github personal token.\");\r\n    }\r\n    try {\r\n        GitHub github = new GitHubBuilder().withOAuthToken(assemblaCredential.getTOKEN()).build();\r\n        List<MV_TCKTMNG_MILESTONE> milestones = getMilestones(project.getUuid());\r\n        for(MV_TCKTMNG_MILESTONE milestone:milestones){\r\n          createGithubTicketsForMilestone(github,milestone,project);\r\n        }\r\n      } catch (Exception e){\r\n        throw new BusinessException(\"Exception while creating github tickets\",e);\r\n      }\r\n    }\r\n\r\n\r\n    @Override\r\n  public void execute(Map<String,Object> params)  throws BusinessException {\r\n      CustomEntityInstance cei = (CustomEntityInstance)params.get(\"CONTEXT_ENTITY\");\r\n      MV_TCKTMNG_PROJECT project = CEIUtils.ceiToPojo(cei, MV_TCKTMNG_PROJECT.class);\r\n      for(String domain:project.getRemoteSpaces().keySet()){\r\n        if(\"github.com\".equals(domain)){\r\n          createGithubTickets(project);\r\n        }\r\n      }\r\n        log.info(\"project:{}\",project);\r\n  }\r\n}\r\n",
+      "executionRoles" : [ ],
+      "sourcingRoles" : [ ],
+      "mavenDependencies" : [ {
+        "groupId" : "org.kohsuke",
+        "artifactId" : "github-api",
+        "version" : "1.122",
+        "coordinates" : "org.kohsuke:github-api:1.122"
+      } ],
+      "importScriptInstances" : [ ]
+    }
+  }, {
     "dtoClassName" : "org.meveo.api.dto.EntityCustomActionDto",
     "dtoData" : {
       "code" : "RETRIEVE_REMOTE_TICKETS",
-      "description" : "retreive tickets from remote spaces",
+      "description" : "retreive remote tickets from milestones",
       "appliesTo" : "CE_MV_TCKTMNG_PROJECT",
-      "label" : "Retrieve tickets",
+      "label" : "Retrieve Milestones tickets",
       "script" : "org.meveo.ticket_management.RetrieveRemoteTicketsScript",
       "applicableToEntityList" : false,
       "applicableToEntityInstance" : true
