@@ -7,6 +7,7 @@ trouble ticket management system
 
 A project, or space is an entity that hold a list of milestones and tickets
 
+Ticket can be retrieved from assembla and pushed to github
 
 
 ### Ticket
