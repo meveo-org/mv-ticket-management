@@ -9,6 +9,19 @@ A project, or space is an entity that hold a list of milestones and tickets
 
 Ticket can be retrieved from assembla and pushed to github
 
+For this you need to create a CREDENTIAL for domain `assembla.com` using your api key as `username` and api secret as `header_value` for the `Header Token` authentication type.
+you also need a CREDENTIAL for domain `github.com` with whatever username (not used) and setting you personal api key in the `token` for the `oauth2` authentication type.
+
+To transfer the milestones and tickets from one assembla space to one github repository
+create a Project with 2 remote spaces :
+- 'assembla.com' with value the code of your assembla space
+- 'github.com' with value the combination of user or organisation and repository name like '<myorga>/<myrepo>'
+
+then go to the detail page of the project and clik on `retrieve milestone` to create on meveo the milestones from the assembla ones
+then click on `retrieve tickets` to create on meveo the tickets for each of those milestones (note that tickets without milestones are not retrieved)
+then click on  `create tickets in github` to create the milestones and tickets on github.
+ 
+
 
 ### Ticket
 

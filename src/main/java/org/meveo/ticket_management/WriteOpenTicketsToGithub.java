@@ -1,8 +1,11 @@
 package org.meveo.ticket_management;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 import org.kohsuke.github.GHIssue;
@@ -64,6 +67,7 @@ public class WriteOpenTicketsToGithub extends Script {
 
     private void createGithubTicketsForMilestone(GitHub github, MV_TCKTMNG_MILESTONE milestone,
             MV_TCKTMNG_PROJECT project)  throws BusinessException {
+        log.debug("createGithubTickets for milestone {}", milestone.getTitle());
         try {
             //GHProject ghProject = github.getProject(Long.parseLong(project.getRemoteSpaces().get("github.com")));
             GHRepository ghRepository = github.getRepository(project.getRemoteSpaces().get("github.com"));
@@ -79,12 +83,14 @@ public class WriteOpenTicketsToGithub extends Script {
                 ghMilestone = ghRepository.createMilestone(milestone.getTitle(), milestone.getDescription());
             }
             List<MV_TCKTMNG_TICKET> tickets = getTickets(milestone.getUuid());
+            Map<MV_TCKTMNG_TICKET,GHIssue>  ticketsToUpdate= new HashMap<>(); 
             Map<String,MV_TCKTMNG_TICKET> openTickets= tickets.stream().filter(ticket-> (ticket.getClosedAt()==null)).collect(Collectors.toMap(MV_TCKTMNG_TICKET::getTitle, ticket -> ticket));
             PagedIterable<GHIssue> issues = ghRepository.listIssues(GHIssueState.ALL);
             issues.forEach(issue ->{
                 if(openTickets.containsKey(issue.getTitle())){
-                    openTickets.remove(issue.getTitle());
-                    log.debug("ticket ["+issue.getTitle()+"] already exist in github, we ignore it");
+                    MV_TCKTMNG_TICKET ticket=openTickets.remove(issue.getTitle());
+                    ticketsToUpdate.put(ticket,issue);
+                    log.debug("ticket ["+issue.getTitle()+"] already exist in github, we just update comments");
                 }
             });
             for(MV_TCKTMNG_TICKET ticket:openTickets.values()){
@@ -92,17 +98,31 @@ public class WriteOpenTicketsToGithub extends Script {
                 //TODO: implement assignee mapping
                 createIssue.body(ticket.getDescription());
                 createIssue.milestone(ghMilestone);
-                for(String tag:ticket.getTags()){
-                    if((!"open".equalsIgnoreCase(tag))&&(!"closed".equalsIgnoreCase(tag))){
-                        createIssue.label(tag);
-                    }
+                if(ticket.getTags()!=null){
+                  for(String tag:ticket.getTags()){
+                      if((!"open".equalsIgnoreCase(tag))&&(!"closed".equalsIgnoreCase(tag))){
+                          createIssue.label(tag);
+                      }
+                  }
                 }
                 GHIssue issue = createIssue.create();
-                /*if(ticket.getComments()!=null){
+                if(ticket.getComments()!=null){
+                    log.debug("set comments of {}",issue.getTitle());
                     for(MV_TCKTMNG_COMMENT comment:ticket.getComments()){
                         issue.comment(comment.getDescription());
                     }
-                } */  
+                }
+            }
+            for(Entry<MV_TCKTMNG_TICKET,GHIssue> entry:ticketsToUpdate.entrySet()){
+                MV_TCKTMNG_TICKET ticket=entry.getKey();
+                GHIssue issue = entry.getValue();
+                log.debug("ticket to update {}, comments:{}",ticket,ticket.getComments());
+                if(ticket.getComments()!=null){
+                    log.debug("update comments of {}",issue.getTitle());
+                    for(MV_TCKTMNG_COMMENT comment:ticket.getComments()){
+                        issue.comment(comment.getDescription());
+                    }
+                }
             }
         } catch (NumberFormatException e) {
             throw new BusinessException("project should contain a \"github.com\" remote space containing the repository name");
@@ -121,6 +141,7 @@ public class WriteOpenTicketsToGithub extends Script {
     try {
         GitHub github = new GitHubBuilder().withOAuthToken(assemblaCredential.getTOKEN()).build();
         List<MV_TCKTMNG_MILESTONE> milestones = getMilestones(project.getUuid());
+        log.debug("found {} milestones",milestones.size());
         for(MV_TCKTMNG_MILESTONE milestone:milestones){
           createGithubTicketsForMilestone(github,milestone,project);
         }
