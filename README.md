@@ -1,6 +1,27 @@
 # mv-ticket-management
 trouble ticket management system
 
+## installation
+In meveo, install (Configuration/Modules/Import From File) the CREDENTIALS module then the latest version of mv-ticket-management module.
+
+## Import milestones and tickets from assembla
+
+In assembla (Profile/API Applications & Sessions) create or reuse a personal key that have Api access, note its <Key> and <Secret>
+then note the name of your project as it appear in `https://app.assembla.com/spaces/<assemblaProjectName>` 
+ 
+In meveo Create a credential (INFRA/Credential) with
+ * DOMAIN: assembla.com
+ * USERNAME: <Key>
+ * AUTHENTICATION_TYPE: Header Token (HEADER)
+ * HEADER_KEY: X-API-KEY
+ * HEADER_VALUE: <Secret>
+
+Then create a project (Projects/Project/ New), give it a name and add a Remote space with 
+ * Key : assembla.com
+ * Value : <assemblaProjectName>
+
+Save the project then on its detail page click the button "retrieve Milestones" then on the button "retrieve Milestones" tickets
+
 ## Datamodel
 
 ### Project
