@@ -670,10 +670,7 @@
           "empty" : false
         }, {
           "code" : "createdAt",
-          "dateValue" : {
-            "nano" : 0,
-            "epochSecond" : 1582799235
-          },
+          "dateValue" : 1582799235,
           "empty" : false
         }, {
           "code" : "number",
@@ -692,10 +689,7 @@
           "empty" : true
         }, {
           "code" : "updatedAt",
-          "dateValue" : {
-            "nano" : 0,
-            "epochSecond" : 1601038361
-          },
+          "dateValue" : 1601038361,
           "empty" : false
         } ],
         "inheritedCustomField" : [ ],
