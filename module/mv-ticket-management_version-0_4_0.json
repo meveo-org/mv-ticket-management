@@ -925,10 +925,7 @@
           "empty" : true
         }, {
           "code" : "dueDate",
-          "dateValue" : {
-            "nano" : 0,
-            "epochSecond" : 1588896000
-          },
+          "dateValue" :  1588896000,
           "empty" : false
         }, {
           "code" : "description",
@@ -949,10 +946,7 @@
           "empty" : false
         }, {
           "code" : "startDate",
-          "dateValue" : {
-            "nano" : 0,
-            "epochSecond" : 1582206090
-          },
+          "dateValue" : 1582206090,
           "empty" : false
         }, {
           "code" : "remoteId",
