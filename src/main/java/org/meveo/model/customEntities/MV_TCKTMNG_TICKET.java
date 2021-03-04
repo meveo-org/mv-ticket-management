@@ -2,11 +2,11 @@ package org.meveo.model.customEntities;
 
 import org.meveo.model.CustomEntity;
 import org.meveo.model.persistence.DBStorageType;
-import java.time.Instant;
 import java.util.List;
 import org.meveo.model.customEntities.MV_TCKTMNG_COMMENT;
-import org.meveo.model.customEntities.MV_TCKTMNG_MILESTONE;
 import org.meveo.model.customEntities.MV_TCKTMNG_PROJECT;
+import java.time.Instant;
+import org.meveo.model.customEntities.MV_TCKTMNG_MILESTONE;
 
 public class MV_TCKTMNG_TICKET implements CustomEntity {
 
@@ -14,15 +14,9 @@ public class MV_TCKTMNG_TICKET implements CustomEntity {
 
     private DBStorageType storages;
 
-    private Instant createdAt;
-
-    private Long number;
-
     private String creator;
 
     private List<MV_TCKTMNG_COMMENT> comments;
-
-    private MV_TCKTMNG_MILESTONE milestone;
 
     private List<String> assignees;
 
@@ -30,15 +24,21 @@ public class MV_TCKTMNG_TICKET implements CustomEntity {
 
     private MV_TCKTMNG_PROJECT project;
 
-    private Instant closedAt;
-
     private String title;
+
+    private String remoteId;
 
     private List<String> tags;
 
-    private Instant updatedAt;
+    private Instant createdAt;
 
-    private String remoteId;
+    private Long number;
+
+    private MV_TCKTMNG_MILESTONE milestone;
+
+    private Instant closedAt;
+
+    private Instant updatedAt;
 
     @Override()
     public String getUuid() {
@@ -57,22 +57,6 @@ public class MV_TCKTMNG_TICKET implements CustomEntity {
         this.storages = storages;
     }
 
-    public Instant getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Instant createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Long getNumber() {
-        return number;
-    }
-
-    public void setNumber(Long number) {
-        this.number = number;
-    }
-
     public String getCreator() {
         return creator;
     }
@@ -87,14 +71,6 @@ public class MV_TCKTMNG_TICKET implements CustomEntity {
 
     public void setComments(List<MV_TCKTMNG_COMMENT> comments) {
         this.comments = comments;
-    }
-
-    public MV_TCKTMNG_MILESTONE getMilestone() {
-        return milestone;
-    }
-
-    public void setMilestone(MV_TCKTMNG_MILESTONE milestone) {
-        this.milestone = milestone;
     }
 
     public List<String> getAssignees() {
@@ -121,20 +97,20 @@ public class MV_TCKTMNG_TICKET implements CustomEntity {
         this.project = project;
     }
 
-    public Instant getClosedAt() {
-        return closedAt;
-    }
-
-    public void setClosedAt(Instant closedAt) {
-        this.closedAt = closedAt;
-    }
-
     public String getTitle() {
         return title;
     }
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getRemoteId() {
+        return remoteId;
+    }
+
+    public void setRemoteId(String remoteId) {
+        this.remoteId = remoteId;
     }
 
     public List<String> getTags() {
@@ -145,20 +121,44 @@ public class MV_TCKTMNG_TICKET implements CustomEntity {
         this.tags = tags;
     }
 
+    public Instant getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Instant createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Long getNumber() {
+        return number;
+    }
+
+    public void setNumber(Long number) {
+        this.number = number;
+    }
+
+    public MV_TCKTMNG_MILESTONE getMilestone() {
+        return milestone;
+    }
+
+    public void setMilestone(MV_TCKTMNG_MILESTONE milestone) {
+        this.milestone = milestone;
+    }
+
+    public Instant getClosedAt() {
+        return closedAt;
+    }
+
+    public void setClosedAt(Instant closedAt) {
+        this.closedAt = closedAt;
+    }
+
     public Instant getUpdatedAt() {
         return updatedAt;
     }
 
     public void setUpdatedAt(Instant updatedAt) {
         this.updatedAt = updatedAt;
-    }
-
-    public String getRemoteId() {
-        return remoteId;
-    }
-
-    public void setRemoteId(String remoteId) {
-        this.remoteId = remoteId;
     }
 
     @Override()

@@ -77,6 +77,7 @@ public class RetrieveRemoteMilestonesScript extends Script {
             log.debug("milestone title: {}",assemblaMilestone.getTitle());
             milestone.setTitle(assemblaMilestone.getTitle());
             milestone.setDescription(assemblaMilestone.getDescription());
+            milestone.setProject(project);
             if(assemblaMilestone.getCreatedAt()!=null){
               milestone.setStartDate(assemblaMilestone.getCreatedAt().toInstant());
             }

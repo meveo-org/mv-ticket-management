@@ -18,6 +18,7 @@ import org.meveo.model.customEntities.CREDENTIAL;
 import org.meveo.admin.exception.BusinessException;
 import org.meveo.service.storage.RepositoryService;
 import org.meveo.api.persistence.CrossStorageApi;
+import org.meveo.api.exception.EntityDoesNotExistsException;
 
 import com.assembla.State;
 import com.assembla.Ticket;
@@ -127,8 +128,8 @@ public class RetrieveRemoteTicketsScript extends Script {
   });
   }
 
-  public void retrieveAssemblaTickets(MV_TCKTMNG_PROJECT project) throws BusinessException {
-    log.debug("retrieveAssemblaTickets for project {}", project.getName());
+  public void retrieveAssemblaTickets(MV_TCKTMNG_PROJECT project,String milestoneTitle) throws BusinessException {
+    
     CREDENTIAL assemblaCredential = getCredential("assembla.com");
     if (assemblaCredential == null) {
       throw new BusinessException(
@@ -138,10 +139,14 @@ public class RetrieveRemoteTicketsScript extends Script {
       AssemblaResource api = AssemblaAPI.create(assemblaCredential.getUSERNAME(), assemblaCredential.getHEADER_VALUE());
       Builder builder= new Builder();
       TicketRequest tr = new TicketRequest(builder.all());
-        List<MV_TCKTMNG_MILESTONE> milestones = getMilestones(project.getUuid());
-        for(MV_TCKTMNG_MILESTONE milestone:milestones){
-          retrieveAssemblaTicketsForMilestone(api,milestone,project,tr);
-        }
+          log.debug("retrieveAssemblaTickets for project {}", project.getName());
+          List<MV_TCKTMNG_MILESTONE> milestones = getMilestones(project.getUuid());
+          for(MV_TCKTMNG_MILESTONE mstone:milestones){
+            if(milestoneTitle==null || milestoneTitle.equals(mstone.getTitle())){
+              log.debug("retrieveAssemblaTickets for milestone {}", mstone.getTitle());
+              retrieveAssemblaTicketsForMilestone(api,mstone,project,tr);
+            }
+          }
       } catch (Exception e){
         throw new BusinessException("Exception while retrieving assembla tickets",e);
       }
@@ -150,13 +155,25 @@ public class RetrieveRemoteTicketsScript extends Script {
     @Override
     public void execute(Map<String,Object> params)  throws BusinessException {
         CustomEntityInstance cei = (CustomEntityInstance)params.get("CONTEXT_ENTITY");
-        MV_TCKTMNG_PROJECT project = CEIUtils.ceiToPojo(cei, MV_TCKTMNG_PROJECT.class);
-        for(String domain:project.getRemoteSpaces().keySet()){
-          if("assembla.com".equals(domain)){
-            retrieveAssemblaTickets(project);
+        if("MV_TCKTMNG_PROJECT".equals(cei.getCetCode())){
+        	MV_TCKTMNG_PROJECT project = CEIUtils.ceiToPojo(cei, MV_TCKTMNG_PROJECT.class);
+        	for(String domain:project.getRemoteSpaces().keySet()){
+          		if("assembla.com".equals(domain)){
+            		retrieveAssemblaTickets(project,null);
+          		}
+        	}
+      		log.info("project:{}",project);
+        } else if("MV_TCKTMNG_MILESTONE".equals(cei.getCetCode())){
+          //MV_TCKTMNG_MILESTONE milestone = CEIUtils.ceiToPojo(cei, MV_TCKTMNG_MILESTONE.class);
+          String projectUuid = ((CustomEntityInstance)cei.get("project")).getUuid();
+          String milestoneTitle = cei.get("title");
+          try {
+            MV_TCKTMNG_PROJECT project = crossStorageApi.find(repositoryService.findDefaultRepository(),projectUuid, MV_TCKTMNG_PROJECT.class);
+            retrieveAssemblaTickets(project,milestoneTitle);
+          } catch(EntityDoesNotExistsException e){
+        	throw new BusinessException("Exception while retrieving project",cei.get("project"));
           }
         }
-      	log.info("project:{}",project);
     }
 
 

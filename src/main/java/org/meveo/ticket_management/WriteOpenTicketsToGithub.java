@@ -18,6 +18,7 @@ import org.kohsuke.github.GitHub;
 import org.kohsuke.github.GitHubBuilder;
 import org.kohsuke.github.PagedIterable;
 import org.meveo.admin.exception.BusinessException;
+import org.meveo.api.exception.EntityDoesNotExistsException;
 import org.meveo.api.persistence.CrossStorageApi;
 import org.meveo.model.customEntities.CREDENTIAL;
 import org.meveo.model.customEntities.CustomEntityInstance;
@@ -56,12 +57,15 @@ public class WriteOpenTicketsToGithub extends Script {
         return matchingMilestones;
     }
 
-
     private List<MV_TCKTMNG_TICKET> getTickets(String milestoneUuid) {
         List<MV_TCKTMNG_TICKET> matchingTickets = crossStorageApi
                 .find(repositoryService.findDefaultRepository(), MV_TCKTMNG_TICKET.class).by("milestone", milestoneUuid)
                 .getResults();
         return matchingTickets;
+    }
+
+    private MV_TCKTMNG_TICKET reloadTicket(MV_TCKTMNG_TICKET ticket) throws EntityDoesNotExistsException {
+        return crossStorageApi.find(repositoryService.findDefaultRepository(),ticket.getUuid(), MV_TCKTMNG_TICKET.class);
     }
 
 
@@ -89,11 +93,12 @@ public class WriteOpenTicketsToGithub extends Script {
             issues.forEach(issue ->{
                 if(openTickets.containsKey(issue.getTitle())){
                     MV_TCKTMNG_TICKET ticket=openTickets.remove(issue.getTitle());
-                    ticketsToUpdate.put(ticket,issue);
-                    log.debug("ticket ["+issue.getTitle()+"] already exist in github, we just update comments");
+                    //ticketsToUpdate.put(ticket,issue);
+                    //log.debug("ticket ["+issue.getTitle()+"] already exist in github, we just update comments");
                 }
             });
             for(MV_TCKTMNG_TICKET ticket:openTickets.values()){
+                ticket = reloadTicket(ticket);
                 GHIssueBuilder createIssue = ghRepository.createIssue(ticket.getTitle());
                 //TODO: implement assignee mapping
                 createIssue.body(ticket.getDescription());
@@ -107,16 +112,19 @@ public class WriteOpenTicketsToGithub extends Script {
                 }
                 GHIssue issue = createIssue.create();
                 if(ticket.getComments()!=null){
+                    ticket = reloadTicket(ticket);
                     log.debug("set comments of {}",issue.getTitle());
                     for(MV_TCKTMNG_COMMENT comment:ticket.getComments()){
+                      if(comment.getDescription()!=null && comment.getDescription().length()>0){
                         issue.comment(comment.getDescription());
+                      }
                     }
                 }
             }
             for(Entry<MV_TCKTMNG_TICKET,GHIssue> entry:ticketsToUpdate.entrySet()){
                 MV_TCKTMNG_TICKET ticket=entry.getKey();
                 GHIssue issue = entry.getValue();
-                log.debug("ticket to update {}, comments:{}",ticket,ticket.getComments());
+                log.debug("ticket to update {}, comments:{}",ticket.getTitle(),ticket.getComments());
                 if(ticket.getComments()!=null){
                     log.debug("update comments of {}",issue.getTitle());
                     for(MV_TCKTMNG_COMMENT comment:ticket.getComments()){
@@ -128,6 +136,8 @@ public class WriteOpenTicketsToGithub extends Script {
             throw new BusinessException("project should contain a \"github.com\" remote space containing the repository name");
         } catch (IOException e) {
             throw new BusinessException("Cannot find project with id :"+project.getRemoteSpaces().get("github.com"));
+        } catch (Exception e) {
+            throw new BusinessException(e);
         }
   }
 
